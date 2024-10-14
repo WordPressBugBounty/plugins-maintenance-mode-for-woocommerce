@@ -2,13 +2,13 @@
 Contributors: netfett
 Tags: woocommerce maintenance, maintenance, under construction, maintenance mode
 Requires at least: 5.0
-Tested up to: 6.6.1
+Tested up to: 6.6.2
 Requires PHP: 7.4
 Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 WC requires at least: 5.0
-WC tested up to: 9.2.3
+WC tested up to: 9.3.3
 
 Maintenance mode for the Woocommerce Shop
 
