@@ -4,25 +4,25 @@
  * @wordpress-plugin
  * Plugin Name:       Maintenance mode for WooCommerce
  * Description:       Put WooCommerce in maintenance mode, without affecting other parts of a website.
- * Version:           1.2
+ * Version:           1.2.1
  * Author:            netfett
  * Author URI:        https://netfett.de
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       maintenance-mode-for-woocommerce
  * Domain Path:       /languages
- * Tested up to: 6.6.2
- * Stable tag: 1.2
+ * Tested up to: 6.7.2
+ * Stable tag: 1.2.1
  * Requires PHP: 7.4
  * WC requires at least: 5.0
- * WC tested up to: 9.3.3
+ * WC tested up to: 9.7.0
  */
 
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-const NF_MAINTENANCE_VERSION = '1.2';
+const NF_MAINTENANCE_VERSION = '1.2.1';
 
 
 if ( !function_exists( 'activate_nf_maintenance' ) ) {
