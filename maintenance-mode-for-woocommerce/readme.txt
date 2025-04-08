@@ -1,14 +1,14 @@
 === Maintenance mode for WooCommerce ===
 Contributors: netfett
 Tags: woocommerce maintenance, maintenance, under construction, maintenance mode
-Requires at least: 5.0
-Tested up to: 6.7.2
+Requires at least: 6.0
+Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-WC requires at least: 5.0
-WC tested up to: 9.7
+WC requires at least: 9.0
+WC tested up to: 9.7.1
 
 Maintenance mode for the Woocommerce Shop
 
@@ -33,6 +33,9 @@ Yes, it's absolutely free. There is no premium version.
 4. You find the settings in the Woocommerce-Menu under "Maintenance mode"
 
 == Changelog ==
+= 1.2.2 =
+* Tested with new version of Woocommerce 9.7.1 and WordPress 6.8. PHP 8 ready.
+
 = 1.2.1 =
 * Tested with new version of Woocommerce and WordPress. PHP 8 ready.
 
