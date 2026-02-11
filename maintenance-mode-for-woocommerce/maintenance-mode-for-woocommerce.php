@@ -11,11 +11,11 @@
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       maintenance-mode-for-woocommerce
  * Domain Path:       /languages
- * Tested up to: 6.8.2
+ * Tested up to: 6.9
  * Stable tag: 1.2.2
  * Requires PHP: 7.4
  * WC requires at least: 5.0
- * WC tested up to: 10.0.4
+ * WC tested up to: 10.3
  */
 
 if ( ! defined( 'WPINC' ) ) {
