@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 if ( !class_exists( 'Nf_Maintenance_i18n' ) ) {
 
@@ -6,20 +9,24 @@ if ( !class_exists( 'Nf_Maintenance_i18n' ) ) {
 
     	public function load_plugin_textdomain() {
 
-            $path = 'maintenance-mode-for-woocommerce/languages';
+            $domain = 'maintenance-mode-for-woocommerce';
+            $locale = determine_locale();
+            $mofile = $domain . '-' . $locale . '.mo';
 
-            $mofile = sprintf( '%s-%s.mo', 'maintenance-mode-for-woocommerce', get_locale() );
+            // 1. Priority: Local translations (Plugin folder)
+            // Use dirname( plugin_dir_path( __FILE__ ) ) to get the root of the plugin
+            $local_path = path_join( dirname( plugin_dir_path( __FILE__ ) ), 'languages/' . $mofile );
 
-            // Load local translations
-          	load_plugin_textdomain(
-        			'maintenance-mode-for-woocommerce',
-        			false,
-        			$path
-            );
+            if ( file_exists( $local_path ) ) {
+                load_textdomain( $domain, $local_path );
+            }
 
-            // Merge user & wp translations
-            $domain_path = path_join( WP_PLUGIN_DIR, "maintenance-mode-for-woocommerce/languages" );
-            load_textdomain( 'maintenance-mode-for-woocommerce', path_join( $domain_path, $mofile ) );
+            // 2. Fallback: Global WordPress translations (wp-content/languages/plugins/)
+            $global_path = path_join( WP_LANG_DIR, 'plugins/' . $mofile );
+
+            if ( file_exists( $global_path ) ) {
+                load_textdomain( $domain, $global_path );
+            }
 
     	}
 

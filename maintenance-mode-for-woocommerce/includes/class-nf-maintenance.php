@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 if ( !class_exists( 'Nf_Maintenance' ) ) {
 
@@ -31,8 +34,7 @@ if ( !class_exists( 'Nf_Maintenance' ) ) {
 
     	}
         function isWoo(){
-
-            if ( !in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+            if ( !in_array( 'woocommerce/woocommerce.php', apply_filters( 'nf_maintenance_active_plugins', get_option( 'active_plugins' ) ) ) ) {
                 return false;
             }
             return true;

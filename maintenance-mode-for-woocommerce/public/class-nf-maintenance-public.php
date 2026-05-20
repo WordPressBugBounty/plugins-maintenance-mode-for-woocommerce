@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 if ( !class_exists( 'Nf_Maintenance_Public' ) ) {
 
@@ -23,7 +26,8 @@ if ( !class_exists( 'Nf_Maintenance_Public' ) ) {
 
         public function nf_woo_redirect() {
 
-        	if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+
+        	if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'nf_maintenance_active_plugins', get_option( 'active_plugins' ) ) ) ) {
 
                 $user = wp_get_current_user();
                 $roles = array( 'shop_manager', 'administrator' );

@@ -4,36 +4,36 @@
  * @wordpress-plugin
  * Plugin Name:       Maintenance mode for WooCommerce
  * Description:       Put WooCommerce in maintenance mode, without affecting other parts of a website.
- * Version:           1.2.2
+ * Version:           1.2.3
  * Author:            netfett
  * Author URI:        https://netfett.de
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       maintenance-mode-for-woocommerce
  * Domain Path:       /languages
- * Tested up to: 6.9
- * Stable tag: 1.2.2
+ * Tested up to: 7
+ * Stable tag: 1.2.3
  * Requires PHP: 7.4
- * WC requires at least: 5.0
- * WC tested up to: 10.3
+ * WC requires at least: 9.0
+ * WC tested up to: 10.7
  */
 
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-const NF_MAINTENANCE_VERSION = '1.2.2';
+const NF_MAINTENANCE_VERSION = '1.2.3';
 
 
-if ( !function_exists( 'activate_nf_maintenance' ) ) {
-    function activate_nf_maintenance() {
+if ( !function_exists( 'nf_maintenance_activate' ) ) {
+    function nf_maintenance_activate() {
     	require_once plugin_dir_path( __FILE__ ) . 'includes/class-nf-maintenance-activator.php';
     	Nf_Maintenance_Activator::activate();
     }
 }
 
-if ( !function_exists( 'deactivate_nf_maintenance' ) ) {
-    function deactivate_nf_maintenance() {
+if ( !function_exists( 'nf_maintenance_deactivate' ) ) {
+    function nf_maintenance_deactivate() {
     	require_once plugin_dir_path( __FILE__ ) . 'includes/class-nf-maintenance-deactivator.php';
     	Nf_Maintenance_Deactivator::deactivate();
     }
@@ -45,18 +45,18 @@ add_action( 'before_woocommerce_init', function() {
         }
 } );
 
-register_activation_hook( __FILE__, 'activate_nf_maintenance' );
-register_deactivation_hook( __FILE__, 'deactivate_nf_maintenance' );
+register_activation_hook( __FILE__, 'nf_maintenance_activate' );
+register_deactivation_hook( __FILE__, 'nf_maintenance_deactivate' );
 
 require plugin_dir_path( __FILE__ ) . 'includes/class-nf-maintenance.php';
 
-if ( !function_exists( 'run_nf_maintenance' ) ) {
-    function run_nf_maintenance() {
+if ( !function_exists( 'nf_maintenance_run' ) ) {
+    function nf_maintenance_run() {
 
     	$plugin = new Nf_Maintenance();
     	$plugin->run();
 
     }
 }
-run_nf_maintenance();
+nf_maintenance_run();
 
