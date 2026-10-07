@@ -2,13 +2,13 @@
 Contributors: netfett
 Tags: woocommerce maintenance, maintenance, under construction, maintenance mode
 Requires at least: 6.0
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.2.4
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 WC requires at least: 9.0
-WC tested up to: 10.7
+WC tested up to: 10.9.4
 
 Maintenance mode for the Woocommerce Shop
 
@@ -28,11 +28,17 @@ Yes, it's absolutely free. There is no premium version.
 == Installation ==
 
 1. Upload `maintenance-mode-for-woocommerce.zip` to `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
+2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Create a page and fill it with content.
-4. You find the settings in the Woocommerce-Menu under "Maintenance mode"
+4. You find the settings in the Woocommerce-Menu under "Maintenance mode".
 
 == Changelog ==
+= 1.3.0 =
+* New: Added WPML multilingual plugin support (automatically serves the translated maintenance page).
+* New: Added frontend notice banner for administrators and shop managers when maintenance mode is active.
+* Improvement: Infinite redirect loop protection (safeguard preventing ERR_TOO_MANY_REDIRECTS if the maintenance page triggers WooCommerce checks).
+* Improvement: Improved WooCommerce detection for WordPress multisite network installations.
+
 = 1.2.4 =
 * Cleanup: Removed local translation files in favor of official WordPress.org language packs.
 * Improvement: Simplified translation loading logic to better support WordPress.org automatic updates.
@@ -53,7 +59,7 @@ Yes, it's absolutely free. There is no premium version.
 * Bugfix translation and other stuff.
 
 = 1.1.1 =
-* NEW: Plugin Polylang supported 
+* NEW: Plugin Polylang supported.
 
 = 1.1 =
 * Tested with new version of Woocommerce, WordPress 6.5 and PHP 8.1.
@@ -90,7 +96,7 @@ Yes, it's absolutely free. There is no premium version.
 * Tested with new versions of WP and WC. PHP 8 ready.
 
 = 1.0.9 =
-* Tested with new versions of WP and WC
+* Tested with new versions of WP and WC.
 
 = 1.0.8 =
 * New language "spanish".
@@ -102,7 +108,7 @@ Yes, it's absolutely free. There is no premium version.
 * PHP 8 ready. Tested with new versions of WP and WC.
 
 = 1.0.5 =
-* Tested with new versions of WP and WC
+* Tested with new versions of WP and WC.
 
 = 1.0.3 =
 * Bugfix ( Stop plugin, when WooCommerce is deactivated )

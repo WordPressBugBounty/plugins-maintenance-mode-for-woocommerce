@@ -34,10 +34,20 @@ if ( !class_exists( 'Nf_Maintenance' ) ) {
 
     	}
         function isWoo(){
-            if ( !in_array( 'woocommerce/woocommerce.php', apply_filters( 'nf_maintenance_active_plugins', get_option( 'active_plugins' ) ) ) ) {
-                return false;
+            if ( class_exists( 'WooCommerce' ) ) {
+                return true;
             }
-            return true;
+            $active_plugins = apply_filters( 'nf_maintenance_active_plugins', get_option( 'active_plugins', array() ) );
+            if ( is_array( $active_plugins ) && in_array( 'woocommerce/woocommerce.php', $active_plugins ) ) {
+                return true;
+            }
+            if ( is_multisite() ) {
+                $sitewide_plugins = get_site_option( 'active_sitewide_plugins', array() );
+                if ( is_array( $sitewide_plugins ) && isset( $sitewide_plugins['woocommerce/woocommerce.php'] ) ) {
+                    return true;
+                }
+            }
+            return false;
         }
 
 
@@ -185,6 +195,14 @@ if ( !class_exists( 'Nf_Maintenance' ) ) {
                  "1" === $options["active"]  and
                  "1" === $options["show_warning"] ) {
     		    $this->loader->add_action( 'admin_bar_menu', $this, 'nf_dashboard_admin_notice', 999, 1 );
+            }
+
+            if ( isset($options["active"]) and
+                 isset($options["show_frontend_notice"]) and
+                 "1" === $options["active"] and
+                 "1" === $options["show_frontend_notice"] ) {
+    		    $this->loader->add_action( 'wp_body_open', $plugin_public, 'render_frontend_banner', 1 );
+    		    $this->loader->add_action( 'wp_footer', $plugin_public, 'render_frontend_banner', 999 );
             }
 
     	}

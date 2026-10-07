@@ -98,7 +98,24 @@ msgid "Maintenance mode ON"
 msgstr ""
 
 #: includes/class-nf-maintenance.php:135 includes/class-nf-maintenance.php:155
+#: public/class-nf-maintenance-public.php:127
 msgid "Settings"
+msgstr ""
+
+#: admin/class-nf-maintenance-admin.php:148
+msgid "Frontend banner (footer)"
+msgstr ""
+
+#: admin/class-nf-maintenance-admin.php:154
+msgid "Show notification banner at the bottom of the page (footer) in the frontend for administrators and shop managers when maintenance mode is active."
+msgstr ""
+
+#: admin/class-nf-maintenance-admin.php:261
+msgid "WPML Plugin is active."
+msgstr ""
+
+#: public/class-nf-maintenance-public.php:124
+msgid "Customers are currently redirected to the maintenance page."
 msgstr ""
 
 #. Plugin Name of the plugin/theme

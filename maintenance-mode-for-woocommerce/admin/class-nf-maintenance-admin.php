@@ -61,6 +61,10 @@ if ( !class_exists( 'Nf_Maintenance_Admin' ) ) {
                 $options["show_warning"] = 0;
             }
 
+            if ( !isset($options["show_frontend_notice"]) ) {
+                $options["show_frontend_notice"] = 0;
+            }
+
             // User can not maintenance activate, when no page is selected.
             if ( $options["active"] != 0 AND $options["nf_postid"] == 0 ) {
 
@@ -141,6 +145,18 @@ if ( !class_exists( 'Nf_Maintenance_Admin' ) ) {
     		);
 
     		add_settings_field(
+    			'show_frontend_notice',
+    			__('Frontend banner (footer)', 'maintenance-mode-for-woocommerce'),
+    			array( $this, 'render_checkbox_input' ),
+    			'nf_maintenance_group',
+    			'nf_maintenance_section',
+    			array(
+    				'option'    => 'show_frontend_notice',
+                    'desc'      => __('Show notification banner at the bottom of the page (footer) in the frontend for administrators and shop managers when maintenance mode is active.','maintenance-mode-for-woocommerce')
+    			)
+    		);
+
+    		add_settings_field(
     			'locked_out',
     			__('Should all users be blocked?', 'maintenance-mode-for-woocommerce'),
     			array( $this, 'render_checkbox_input' ),
@@ -209,6 +225,8 @@ if ( !class_exists( 'Nf_Maintenance_Admin' ) ) {
                 $lang = pll_default_language( 'slug' );
             }
 
+            $is_wpml = has_filter( 'wpml_object_id' ) || defined( 'ICL_SITEPRESS_VERSION' );
+
             $options = get_option( 'nf_maintenance_cfg', [ 'nf_postid' => 0 ]);
             ?>
             <label for="posts"></label>
@@ -224,6 +242,11 @@ if ( !class_exists( 'Nf_Maintenance_Admin' ) ) {
                 'post_type' => 'page',
                 'lang' => $lang
             );
+
+            if ( $is_wpml ) {
+                $defaults['suppress_filters'] = false;
+            }
+
             $posts = get_posts($defaults);
 
             $sid[] = wc_get_page_id( 'shop' );
@@ -242,6 +265,9 @@ if ( !class_exists( 'Nf_Maintenance_Admin' ) ) {
             <?php
                 if ( $lang !== '' ) { ?>
                     <hr><p class="description"><?php echo esc_attr__('Polylang Plugin is active.','maintenance-mode-for-woocommerce');?></p>
+                    <p class="description"><?php echo esc_attr__('The page is displayed in the current language.','maintenance-mode-for-woocommerce');?></p>
+                <?php } elseif ( $is_wpml ) { ?>
+                    <hr><p class="description"><?php echo esc_attr__('WPML Plugin is active.','maintenance-mode-for-woocommerce');?></p>
                     <p class="description"><?php echo esc_attr__('The page is displayed in the current language.','maintenance-mode-for-woocommerce');?></p>
                 <?php }
 
