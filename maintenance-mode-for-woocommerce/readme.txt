@@ -3,8 +3,9 @@ Contributors: netfett
 Tags: woocommerce maintenance, maintenance, under construction, maintenance mode
 Requires at least: 6.0
 Tested up to: 7.1
-Requires PHP: 7.4
-Stable tag: 1.3.0
+Requires PHP: 8.2
+Requires Plugins: woocommerce
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 WC requires at least: 9.0
@@ -25,6 +26,10 @@ You made an error while configuring or maintaining your products, and you can't 
 And the best thing is: it's free!
 Yes, it's absolutely free. There is no premium version.
 
+= Contributing & Development =
+Development takes place actively on GitHub. Bug reports, feature suggestions, and pull requests are always welcome:
+[GitHub Repository](https://github.com/NetFett/maintenance-mode-for-woocommerce)
+
 == Installation ==
 
 1. Upload `maintenance-mode-for-woocommerce.zip` to `/wp-content/plugins/` directory
@@ -33,6 +38,10 @@ Yes, it's absolutely free. There is no premium version.
 4. You find the settings in the Woocommerce-Menu under "Maintenance mode".
 
 == Changelog ==
+= 1.3.1 =
+* Requirement: Raised minimum required PHP version to 8.2 (older PHP versions such as 7.4, 8.0, and 8.1 have reached official End of Life and no longer receive security updates).
+* Improvement: Added early PHP compatibility safeguard to prevent crashes and safely notify administrators on unsupported PHP versions.
+
 = 1.3.0 =
 * New: Added WPML multilingual plugin support (automatically serves the translated maintenance page).
 * New: Added frontend notice banner for administrators and shop managers when maintenance mode is active.
